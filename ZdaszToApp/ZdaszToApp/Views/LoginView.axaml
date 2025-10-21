@@ -1,0 +1,32 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ZdaszToApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="800"
+             x:Class="ZdaszToApp.Views.LoginView">
+    
+    <Design.DataContext>
+        <vm:LoginViewModel />
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto Auto Auto Auto">
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="10">
+        <TextBlock Name="ViewTitle" Text="Strona logowania" FontSize="50"/>
+    </StackPanel>
+        
+    <Image Grid.Row="1" Source="/Assets/avalonia-logo.ico" Stretch="None"></Image>
+        
+    <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+        <TextBlock Text="Hasło" FontSize="30"/>
+        <TextBox Width="200" Watermark="Wpisz hasło"></TextBox>
+        
+        <TextBlock Text="Login" FontSize="30"/>
+        <TextBox Width="200" Watermark="Wpisz adres e-mail"></TextBox>
+        
+        <Button Name="LogButton" Content="Zaloguj" HorizontalAlignment="Center" Margin="20"></Button>
+    </StackPanel>
+        
+    </Grid>
+        </UserControl>

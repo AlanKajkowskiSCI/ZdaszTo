@@ -1,0 +1,11 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ZdaszToApp.MainWindow"
+        Title="Test Avalonia"
+        Width="400" Height="200">
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+                <TextBlock Name="TextBlock" Text="Hello Avalonia!" FontSize="24"/>
+                <Button Name="Button" Content="Kliknij mnie!" Width="150" Height="40"/>
+        </StackPanel>
+</Window>
