@@ -102,6 +102,14 @@
                                      Text="{Binding Email, Mode=TwoWay}"
                                      Watermark="Wpisz adres e-mail"
                                      Margin="10,0,10,0"/>
+                            
+                            <Border Background="#FFEBEE" CornerRadius="4" Padding="8,4" Margin="10,0,10,0"
+                                    IsVisible="{Binding Error_email, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                                <TextBlock Text="{Binding Error_email}"
+                                           Foreground="#D32F2F"
+                                           FontSize="12"
+                                           FontWeight="Bold"/>
+                            </Border>
                         </StackPanel>
             
                         <StackPanel Spacing="5">

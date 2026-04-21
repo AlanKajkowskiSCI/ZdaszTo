@@ -335,7 +335,7 @@ public partial class Inf02 : ViewModelBase
             return;
         }
 
-        await Task.Delay(500);
+        await Task.Delay(IsCorrect ? 1000 : 2000);
         await LoadNextQuestionAsync();
     }
 

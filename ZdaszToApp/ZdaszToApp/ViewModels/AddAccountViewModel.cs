@@ -1,6 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using ZdaszToApp.Services;
 
@@ -12,6 +13,22 @@ public partial class AddAccountViewModel : ViewModelBase
     private readonly AuthService _authService = AuthService.Instance;
 
     [ObservableProperty] private string? email;
+
+    partial void OnEmailChanged(string? value)
+    {
+        if (!string.IsNullOrEmpty(value) && !IsValidEmail(value))
+        {
+            Error_email = "Nieprawidłowy adres e-mail";
+        }
+        else if (string.IsNullOrEmpty(value))
+        {
+            Error_email = null;
+        }
+        else
+        {
+            Error_email = null;
+        }
+    }
 
     [ObservableProperty] private string? username;
 
@@ -40,9 +57,17 @@ public partial class AddAccountViewModel : ViewModelBase
         Error_password = null;
         IsLoading = true;
 
-        if (string.IsNullOrWhiteSpace(Email))
+if (string.IsNullOrWhiteSpace(Email))
         {
             Error_email = "Wpisz e-mail";
+            IsLoading = false;
+            return;
+        }
+
+        if (!IsValidEmail(Email))
+        {
+            Console.WriteLine($"[DEBUG] IsValidEmail zwrocilo false dla: {Email}");
+            Error_email = "Nieprawidłowy adres e-mail";
             IsLoading = false;
             return;
         }
@@ -112,6 +137,22 @@ public partial class AddAccountViewModel : ViewModelBase
         OnGoBackToLogin?.Invoke();
     }
 
-    public event Action? OnGoBackToLogin;
+public event Action? OnGoBackToLogin;
     public event Action? OnLoginSuccess;
+
+    private static bool IsValidEmail(string? email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return false;
+        
+        try
+        {
+            var addr = new MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }
