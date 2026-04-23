@@ -47,7 +47,7 @@ def end_attempt(request, cursor, connection):
             wrong_answers = wrong_answers + VALUES(wrong_answers);"""
             cursor.execute(sql, values2)
             connection.commit()
-            response = "ahh"
+            response = "Results saved"
         except:
             response = "Invalid answers"
     else:
