@@ -15,6 +15,7 @@ public partial class Inf03View : UserControl, ILoadable
         InitializeComponent();
         SetupTheme();
         DataContext = new Inf03();
+        Unloaded += OnUnloaded;
     }
 
     public Inf03View(int collectionId)
@@ -22,6 +23,15 @@ public partial class Inf03View : UserControl, ILoadable
         InitializeComponent();
         SetupTheme();
         DataContext = new Inf03(collectionId);
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        if (DataContext is Inf03 vm)
+        {
+            vm.StopTimer();
+        }
     }
 
     private void SetupTheme()
@@ -125,6 +135,7 @@ public partial class Inf03View : UserControl, ILoadable
             if (testView.DataContext is Inf03 vm)
             {
                 vm.Lives = 0;
+                vm.StopTimer();
             }
             if (endScreen.DataContext is EndScreenViewModel endVm)
             {

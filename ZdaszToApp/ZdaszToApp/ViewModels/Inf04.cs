@@ -113,6 +113,14 @@ public partial class Inf04 : ViewModelBase
         _timer.Start();
     }
 
+    public void StopTimer()
+    {
+        _timer?.Stop();
+        _timer?.Dispose();
+        _timer = null;
+    }
+
+
     private void OnTimerTick(object? sender, ElapsedEventArgs e)
     {
         if (TimeRemaining > 0)

@@ -159,7 +159,7 @@
                     <Border Background="White" CornerRadius="10" Padding="12" Margin="0,25,0,0" Opacity="0.9">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock Text="★" FontSize="20" Foreground="#F57F17" VerticalAlignment="Center"/>
-                            <TextBlock Text=" ZdaszTo v1.1.1 " FontSize="16" Foreground="#558B2F" 
+                            <TextBlock Text=" ZdaszTo v1.1.2 " FontSize="16" Foreground="#558B2F" 
                                        FontFamily="{StaticResource JerseyFont}" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Border>

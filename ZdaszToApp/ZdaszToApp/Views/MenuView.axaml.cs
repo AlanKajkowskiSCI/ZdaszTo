@@ -1,4 +1,4 @@
-using Avalonia;
+ausing Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
@@ -105,7 +105,7 @@ public partial class MenuView : UserControl, ILoadable
     {
         if (parent.Name == name)
             return parent;
-            
+
         if (parent is Panel panel)
         {
             foreach (var child in panel.Children)
@@ -122,8 +122,35 @@ public partial class MenuView : UserControl, ILoadable
             var found = FindControlRecursive(content, name);
             if (found != null) return found;
         }
-        
+
         return null;
+    }
+
+    private void StopAllTestTimers()
+    {
+        var mainDock = FindParentWithName(this, "Main") as DockPanel;
+        if (mainDock == null) return;
+
+        var window = mainDock.GetVisualRoot() as Window;
+        if (window == null) return;
+
+        var testView = window.FindControl<Inf02View>("Test");
+        if (testView?.DataContext is Inf02 inf02Vm)
+        {
+            inf02Vm.StopTimer();
+        }
+
+        var inf03View = window.FindControl<Inf03View>("Inf03");
+        if (inf03View?.DataContext is Inf03 inf03Vm)
+        {
+            inf03Vm.StopTimer();
+        }
+
+        var inf04View = window.FindControl<Inf04View>("Inf04");
+        if (inf04View?.DataContext is Inf04 inf04Vm)
+        {
+            inf04Vm.StopTimer();
+        }
     }
 
     private void OnInf02Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -132,11 +159,14 @@ public partial class MenuView : UserControl, ILoadable
         
         var mainDock = FindParentWithName(this, "Main") as DockPanel;
         var testView = FindInRoot(this, "Test") as Inf02View;
+        var inf03View = FindInRoot(this, "Inf03") as Inf03View;
+        var inf04View = FindInRoot(this, "Inf04") as Inf04View;
         
         Debug.WriteLine($"[MenuView] mainDock: {mainDock}, testView: {testView}");
         
         if (testView != null && mainDock != null)
         {
+            StopAllTestTimers();
             testView.DataContext = new Inf02(1);
             testView.IsVisible = true;
             mainDock.IsVisible = false;
@@ -150,11 +180,14 @@ public partial class MenuView : UserControl, ILoadable
         
         var mainDock = FindParentWithName(this, "Main") as DockPanel;
         var inf03View = FindInRoot(this, "Inf03") as Inf03View;
+        var testView = FindInRoot(this, "Test") as Inf02View;
+        var inf04View = FindInRoot(this, "Inf04") as Inf04View;
         
         Debug.WriteLine($"[MenuView] mainDock: {mainDock}, inf03View: {inf03View}");
         
         if (inf03View != null && mainDock != null)
         {
+            StopAllTestTimers();
             inf03View.DataContext = new Inf03(2);
             inf03View.IsVisible = true;
             mainDock.IsVisible = false;
@@ -168,11 +201,14 @@ public partial class MenuView : UserControl, ILoadable
         
         var mainDock = FindParentWithName(this, "Main") as DockPanel;
         var inf04View = FindInRoot(this, "Inf04") as Inf04View;
+        var testView = FindInRoot(this, "Test") as Inf02View;
+        var inf03View = FindInRoot(this, "Inf03") as Inf03View;
         
         Debug.WriteLine($"[MenuView] mainDock: {mainDock}, inf04View: {inf04View}");
         
         if (inf04View != null && mainDock != null)
         {
+            StopAllTestTimers();
             inf04View.DataContext = new Inf04(3);
             inf04View.IsVisible = true;
             mainDock.IsVisible = false;

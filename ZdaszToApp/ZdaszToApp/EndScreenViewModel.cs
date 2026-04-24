@@ -112,6 +112,23 @@ public partial class EndScreenViewModel : ViewModelBase
                 if (endScreen != null && mainDock != null)
                 {
                     QuizCounter.Reset();
+                    
+                    var testView = window.FindControl<Inf02View>("Test");
+                    if (testView?.DataContext is Inf02 inf02Vm)
+                    {
+                        inf02Vm.StopTimer();
+                    }
+                    var inf03View = window.FindControl<Inf03View>("Inf03");
+                    if (inf03View?.DataContext is Inf03 inf03Vm)
+                    {
+                        inf03Vm.StopTimer();
+                    }
+                    var inf04View = window.FindControl<Inf04View>("Inf04");
+                    if (inf04View?.DataContext is Inf04 inf04Vm)
+                    {
+                        inf04Vm.StopTimer();
+                    }
+                    
                     endScreen.IsVisible = false;
                     mainDock.IsVisible = true;
                 }
@@ -127,6 +144,23 @@ public partial class EndScreenViewModel : ViewModelBase
                 if (endScreen != null && mainDock != null)
                 {
                     QuizCounter.Reset();
+                    
+                    var testView = FindControlRecursive(root, "Test") as Inf02View;
+                    if (testView?.DataContext is Inf02 inf02Vm)
+                    {
+                        inf02Vm.StopTimer();
+                    }
+                    var inf03View = FindControlRecursive(root, "Inf03") as Inf03View;
+                    if (inf03View?.DataContext is Inf03 inf03Vm)
+                    {
+                        inf03Vm.StopTimer();
+                    }
+                    var inf04View = FindControlRecursive(root, "Inf04") as Inf04View;
+                    if (inf04View?.DataContext is Inf04 inf04Vm)
+                    {
+                        inf04Vm.StopTimer();
+                    }
+                    
                     endScreen.IsVisible = false;
                     mainDock.IsVisible = true;
                 }
@@ -148,30 +182,46 @@ public partial class EndScreenViewModel : ViewModelBase
                     QuizCounter.Reset();
                     endScreen.IsVisible = false;
 
+                    var testView = window.FindControl<Inf02View>("Test");
+                    if (testView?.DataContext is Inf02 inf02Vm)
+                    {
+                        inf02Vm.StopTimer();
+                    }
+                    var inf03View = window.FindControl<Inf03View>("Inf03");
+                    if (inf03View?.DataContext is Inf03 inf03Vm)
+                    {
+                        inf03Vm.StopTimer();
+                    }
+                    var inf04View = window.FindControl<Inf04View>("Inf04");
+                    if (inf04View?.DataContext is Inf04 inf04Vm)
+                    {
+                        inf04Vm.StopTimer();
+                    }
+
                     switch (_lastTestType)
                     {
                         case "Inf02":
-                            var testView = window.FindControl<Inf02View>("Test");
-                            if (testView != null)
+                            var testView2 = window.FindControl<Inf02View>("Test");
+                            if (testView2 != null)
                             {
-                                testView.DataContext = new Inf02(1);
-                                testView.IsVisible = true;
+                                testView2.DataContext = new Inf02(1);
+                                testView2.IsVisible = true;
                             }
                             break;
                         case "Inf03":
-                            var inf03View = window.FindControl<Inf03View>("Inf03");
-                            if (inf03View != null)
+                            var inf03View2 = window.FindControl<Inf03View>("Inf03");
+                            if (inf03View2 != null)
                             {
-                                inf03View.DataContext = new Inf03(2);
-                                inf03View.IsVisible = true;
+                                inf03View2.DataContext = new Inf03(2);
+                                inf03View2.IsVisible = true;
                             }
                             break;
                         case "Inf04":
-                            var inf04View = window.FindControl<Inf04View>("Inf04");
-                            if (inf04View != null)
+                            var inf04View2 = window.FindControl<Inf04View>("Inf04");
+                            if (inf04View2 != null)
                             {
-                                inf04View.DataContext = new Inf04(3);
-                                inf04View.IsVisible = true;
+                                inf04View2.DataContext = new Inf04(3);
+                                inf04View2.IsVisible = true;
                             }
                             break;
                     }
@@ -189,30 +239,46 @@ public partial class EndScreenViewModel : ViewModelBase
                     QuizCounter.Reset();
                     endScreen.IsVisible = false;
 
+                    var testView = FindControlRecursive(root, "Test") as Inf02View;
+                    if (testView?.DataContext is Inf02 inf02Vm)
+                    {
+                        inf02Vm.StopTimer();
+                    }
+                    var inf03View = FindControlRecursive(root, "Inf03") as Inf03View;
+                    if (inf03View?.DataContext is Inf03 inf03Vm)
+                    {
+                        inf03Vm.StopTimer();
+                    }
+                    var inf04View = FindControlRecursive(root, "Inf04") as Inf04View;
+                    if (inf04View?.DataContext is Inf04 inf04Vm)
+                    {
+                        inf04Vm.StopTimer();
+                    }
+
                     switch (_lastTestType)
                     {
                         case "Inf02":
-                            var testView = FindControlRecursive(root, "Test");
-                            if (testView != null)
+                            var testView2 = FindControlRecursive(root, "Test");
+                            if (testView2 != null)
                             {
-                                testView.DataContext = new Inf02(1);
-                                testView.IsVisible = true;
+                                testView2.DataContext = new Inf02(1);
+                                testView2.IsVisible = true;
                             }
                             break;
                         case "Inf03":
-                            var inf03View = FindControlRecursive(root, "Inf03");
-                            if (inf03View != null)
+                            var inf03View2 = FindControlRecursive(root, "Inf03");
+                            if (inf03View2 != null)
                             {
-                                inf03View.DataContext = new Inf03(2);
-                                inf03View.IsVisible = true;
+                                inf03View2.DataContext = new Inf03(2);
+                                inf03View2.IsVisible = true;
                             }
                             break;
                         case "Inf04":
-                            var inf04View = FindControlRecursive(root, "Inf04");
-                            if (inf04View != null)
+                            var inf04View2 = FindControlRecursive(root, "Inf04");
+                            if (inf04View2 != null)
                             {
-                                inf04View.DataContext = new Inf04(3);
-                                inf04View.IsVisible = true;
+                                inf04View2.DataContext = new Inf04(3);
+                                inf04View2.IsVisible = true;
                             }
                             break;
                     }
