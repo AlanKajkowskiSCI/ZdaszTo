@@ -324,13 +324,19 @@ public partial class Inf02 : ViewModelBase
             HasSelectedTrueFalse = true;
         }
 
+        bool wasLastLife = false;
         if (!IsCorrect && Lives > 0)
         {
             Lives--;
+            wasLastLife = Lives == 0;
         }
 
         if (Lives <= 0)
         {
+            if (wasLastLife)
+            {
+                await Task.Delay(2000);
+            }
             ShowEndScreen();
             return;
         }

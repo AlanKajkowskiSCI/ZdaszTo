@@ -144,7 +144,7 @@
                     <Border Background="#A5D6A7" CornerRadius="10" Margin="30,30,30,40" Padding="15" x:Name="VersionBorder">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock Text="★" FontSize="22" Foreground="#F57F17" VerticalAlignment="Center" x:Name="VersionStar"/>
-                            <TextBlock Text=" Wersja 1.0 " FontSize="16" Foreground="#558B2F" FontFamily="{StaticResource JerseyFont}" VerticalAlignment="Center" x:Name="VersionText"/>
+                            <TextBlock Text=" Wersja v1.1.1 " FontSize="16" Foreground="#558B2F" FontFamily="{StaticResource JerseyFont}" VerticalAlignment="Center" x:Name="VersionText"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>
